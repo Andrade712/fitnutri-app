@@ -1,0 +1,12 @@
+{
+  "name": "FitNutri — Nutrição & Hipertrofia",
+  "short_name": "FitNutri",
+  "description": "Diário alimentar e acompanhamento nutricional para hipertrofia.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0f0c",
+  "theme_color": "#101510",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

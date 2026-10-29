@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101510"><meta name="description" content="FitNutri: diário alimentar e acompanhamento de nutrição para hipertrofia.">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+  <title>FitNutri — Nutrição & Hipertrofia</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#inicio"><span class="brand-mark">F</span><span>FIT<span class="green">NUTRI</span><small>NUTRIÇÃO & PERFORMANCE</small></span></a>
+      <nav aria-label="Navegação principal">
+        <a class="nav-link active" href="#inicio"><span>▦</span> Visão geral</a>
+        <a class="nav-link" href="#refeicoes"><span>◷</span> Diário alimentar</a>
+        <a class="nav-link" href="#progresso"><span>↗</span> Meu progresso</a>
+        <a class="nav-link" href="#metas"><span>⚙</span> Minhas metas</a>
+      </nav>
+      <div class="sidebar-note"><span class="pulse"></span><div><b>SEU FOCO</b><p>Consistência todos os dias.</p></div></div>
+      <div class="sidebar-foot">VERSÃO 0.3 · SEUS DADOS FICAM NESTE DISPOSITIVO</div>
+    </aside>
+    <main class="main-content" id="inicio">
+      <header class="topbar"><div><p class="eyebrow" id="today-label">SEU RESUMO DIÁRIO</p><h1>Vamos evoluir. <span class="green">Um dia de cada vez.</span></h1></div><div class="topbar-right"><span class="local-badge"><span class="pulse"></span> MODO LOCAL</span><div class="avatar">FN</div></div></header>
+      <section class="welcome-row"><div><h2>Resumo de hoje</h2><p class="muted">Acompanhe sua alimentação e mantenha o foco na sua meta.</p></div><button class="button button-primary" id="quick-add">＋ Adicionar refeição</button></section>
+      <section class="stats-grid" aria-label="Resumo nutricional">
+        <article class="stat-card calories-card"><div class="stat-head"><span>CALORIAS CONSUMIDAS</span><span class="stat-icon">ϟ</span></div><div class="stat-number"><strong id="calories-total">0</strong><span>kcal</span></div><div class="progress-track"><div class="progress-fill" id="calorie-progress"></div></div><div class="stat-foot"><span id="calorie-left">0 kcal restantes</span><span id="calorie-percent">0%</span></div></article>
+        <article class="stat-card"><div class="stat-head"><span>PROTEÍNAS</span><span class="stat-icon">◆</span></div><div class="stat-number"><strong id="protein-total">0</strong><span>g</span></div><div class="progress-track"><div class="progress-fill" id="protein-progress"></div></div><div class="stat-foot"><span>Meta <b id="protein-goal-label">150 g</b></span><span id="protein-percent">0%</span></div></article>
+        <article class="stat-card"><div class="stat-head"><span>CARBOIDRATOS</span><span class="stat-icon">◈</span></div><div class="stat-number"><strong id="carbs-total">0</strong><span>g</span></div><div class="progress-track"><div class="progress-fill" id="carbs-progress"></div></div><div class="stat-foot"><span>Meta <b id="carbs-goal-label">250 g</b></span><span id="carbs-percent">0%</span></div></article>
+        <article class="stat-card"><div class="stat-head"><span>GORDURAS</span><span class="stat-icon">●</span></div><div class="stat-number"><strong id="fat-total">0</strong><span>g</span></div><div class="progress-track"><div class="progress-fill" id="fat-progress"></div></div><div class="stat-foot"><span>Meta <b id="fat-goal-label">70 g</b></span><span id="fat-percent">0%</span></div></article>
+      </section>
+      <div class="content-grid">
+        <section class="panel diary-panel" id="refeicoes"><div class="panel-heading"><div><h2>Diário alimentar</h2><p class="muted">O que você comeu hoje?</p></div><button class="button button-outline" id="add-food">＋ Adicionar alimento</button></div>
+          <div class="meal-tabs" role="group" aria-label="Filtrar refeições"><button class="meal-tab active" data-meal-filter="Todas">Todas</button><button class="meal-tab" data-meal-filter="Café da manhã">Café</button><button class="meal-tab" data-meal-filter="Almoço">Almoço</button><button class="meal-tab" data-meal-filter="Jantar">Jantar</button><button class="meal-tab" data-meal-filter="Lanche">Lanche</button></div>
+          <div id="food-list" class="food-list"></div><div class="empty-state" id="empty-state"><div class="empty-icon">＋</div><b>Seu diário começa aqui</b><p>Adicione o primeiro alimento para acompanhar calorias e macros.</p><button class="button button-primary" id="empty-add">Adicionar primeiro alimento</button></div>
+        </section>
+        <div class="right-column">
+          <section class="panel water-panel"><div class="panel-heading"><div><h2>Hidratação</h2><p class="muted">Cada copo conta.</p></div><span class="water-icon">≈</span></div><div class="water-count"><strong id="water-count">0</strong><span> / 8 copos</span></div><div class="water-cups" id="water-cups" aria-label="Copos de água"></div><div class="water-actions"><button class="button button-outline" id="water-minus" aria-label="Remover copo de água">−</button><button class="button button-primary" id="water-plus">＋ Adicionar copo</button></div><p class="tiny-note">Meta inicial ilustrativa: 8 copos. Ajuste conforme suas necessidades.</p></section>
+          <section class="panel weight-panel" id="progresso"><div class="panel-heading"><div><h2>Meu progresso</h2><p class="muted">Acompanhe seu peso.</p></div><span class="trend-icon">↗</span></div><div class="weight-current"><strong id="current-weight">—</strong><span>kg</span></div><form id="weight-form" class="inline-form"><label class="sr-only" for="weight-input">Peso em quilogramas</label><input id="weight-input" type="number" min="20" max="400" step="0.1" placeholder="Ex.: 75,5" required><button class="button button-primary" type="submit">Registrar</button></form><div id="weight-history" class="weight-history"><p class="muted">Registre seu peso para começar.</p></div></section>
+        </div>
+      </div>
+      <section class="panel goals-panel" id="metas"><div class="panel-heading"><div><h2>Suas metas diárias</h2><p class="muted">Personalize os números para seu objetivo.</p></div><span class="goal-icon">◎</span></div><form id="goals-form" class="goals-form"><label>Calorias (kcal)<input type="number" id="goal-calories" min="500" max="10000" required></label><label>Proteínas (g)<input type="number" id="goal-protein" min="10" max="600" required></label><label>Carboidratos (g)<input type="number" id="goal-carbs" min="10" max="1000" required></label><label>Gorduras (g)<input type="number" id="goal-fat" min="10" max="400" required></label><button class="button button-primary" type="submit">Salvar metas</button></form><p class="tiny-note">As metas padrão são apenas exemplos, não uma prescrição nutricional individual.</p></section>
+      <section class="panel backup-panel" id="backup"><div class="panel-heading"><div><h2>Seus dados e backup</h2><p class="muted">Exporte uma cópia para não perder seus registros ao trocar de navegador ou computador.</p></div><span class="goal-icon">⇧</span></div><div class="backup-actions"><button class="button button-primary" id="export-backup" type="button">Exportar meus dados</button><button class="button button-outline" id="import-backup" type="button">Importar backup</button><input id="backup-file" type="file" accept="application/json,.json" hidden></div><p class="tiny-note">O arquivo de backup pode conter seus alimentos registrados, metas, hidratação e histórico de peso. Guarde-o em local privado.</p></section>
+      <footer>FITNUTRI <span>·</span> Feito para acompanhar sua consistência. Não substitui orientação de nutricionista.</footer>
+    </main>
+  </div>
+  <dialog id="food-dialog" class="food-dialog"><form id="food-form" method="dialog"><div class="dialog-heading"><div><p class="eyebrow">DIÁRIO ALIMENTAR</p><h2>Adicionar alimento</h2></div><button type="button" class="close-button" id="close-dialog" aria-label="Fechar">×</button></div><label>Alimento<select id="food-select" required></select></label>
+    <div class="food-dialog-tools"><button type="button" class="button button-outline button-small" id="toggle-custom-food">＋ Cadastrar alimento personalizado</button><button type="button" class="button button-outline button-small" id="toggle-custom-management">Meus alimentos</button></div>
+    <section class="custom-food-editor" id="custom-food-editor" hidden aria-label="Cadastro de alimento personalizado">
+      <div class="custom-editor-heading"><h3>Novo alimento</h3><p>Informe os valores nutricionais por 100 g, conforme o rótulo ou uma fonte confiável.</p></div>
+      <label>Nome do alimento<input id="custom-food-name" type="text" maxlength="70" placeholder="Ex.: Iogurte proteico" autocomplete="off"></label>
+      <div class="custom-nutrients-grid">
+        <label>Calorias (kcal)<input id="custom-food-kcal" type="number" min="0" max="1000" step="0.1" placeholder="Ex.: 80"></label>
+        <label>Proteínas (g)<input id="custom-food-protein" type="number" min="0" max="100" step="0.1" placeholder="Ex.: 10"></label>
+        <label>Carboidratos (g)<input id="custom-food-carbs" type="number" min="0" max="100" step="0.1" placeholder="Ex.: 5"></label>
+        <label>Gorduras (g)<input id="custom-food-fat" type="number" min="0" max="100" step="0.1" placeholder="Ex.: 2"></label>
+      </div>
+      <div class="custom-editor-actions"><button type="button" class="button button-primary" id="save-custom-food">Salvar alimento</button><button type="button" class="button button-outline" id="cancel-custom-food">Cancelar</button></div>
+      <p class="tiny-note">Os valores são cadastrados por 100 g. Confira a unidade e os dados antes de salvar.</p>
+    </section>
+    <section class="custom-food-management" id="custom-food-management" hidden><h3>Meus alimentos personalizados</h3><div id="custom-food-list"></div></section>
+    <div class="food-preview" id="food-preview"></div><label>Quantidade (gramas)<input id="food-grams" type="number" min="1" max="3000" value="100" required></label><label>Refeição<select id="meal-select"><option>Café da manhã</option><option>Almoço</option><option>Jantar</option><option>Lanche</option></select></label><div class="dialog-actions"><button type="button" class="button button-outline" id="cancel-dialog">Cancelar</button><button type="submit" class="button button-primary">Adicionar ao diário</button></div><p class="tiny-note">Valores por alimento são estimativas e variam por marca, preparo e porção.</p></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body></html>
